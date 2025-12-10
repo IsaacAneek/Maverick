@@ -1,5 +1,6 @@
 .root {
-    -fx-background-color: #232323;
+    -fx-background-color: #333333;
+    /*1d263c*/
     -fx-font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -46,4 +47,21 @@ ScrollPane {
     -fx-background-color: #232323;
     -fx-spacing: 10px;
     -fx-padding: 0px 5px 0px 5px;
+}
+
+#dashboardHbox {
+    -fx-spacing: 10px;
+    -fx-padding: 10px 5px 0px 5px;
+}
+
+#scrollPane {
+    -fx-background-color: #232323;
+}
+
+.scroll-bar {
+    -fx-background-color: #333333;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #232323;
 }
