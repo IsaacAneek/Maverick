@@ -5,12 +5,12 @@
 }
 
 .button {
-    -fx-background-color: #838383;
+    -fx-background-color: #515151;
     -fx-text-fill: white;
 }
 
 .label {
-    -fx-background-color: #838383;
+    -fx-background-color: #515151;
     -fx-text-fill: white;
     -fx-background-radius: 2px;
     -fx-padding: 10px;
@@ -19,6 +19,17 @@
 #sideBarVbox {
     -fx-padding: 0px 15px 0px 15px;
     -fx-spacing: 10px;
+    -fx-background-radius: 3px;
+    -fx-background-color: #232323;
+}
+
+.button:hover {
+    -fx-background-color: #ffc400;
+    -fx-text-fill: black;
+}
+
+.button:pressed {
+    -fx-background-color: #b38a00;
 }
 
 ScrollPane {
@@ -50,7 +61,7 @@ ScrollPane {
 }
 
 #dashboardHbox {
-    -fx-spacing: 10px;
+    -fx-spacing: 15px;
     -fx-padding: 10px 5px 0px 5px;
 }
 

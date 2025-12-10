@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../styles/main-window.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../styles/main-window.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.maverick.MainWindowController">
    <left>
-      <VBox fx:id="sideBarVbox" alignment="CENTER" prefHeight="720.0" prefWidth="183.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="sideBarVbox" alignment="CENTER" prefHeight="670.0" prefWidth="183.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="220.0" text="Kanban Board" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="252.0" text="Warren Buffets 5-25 rule" />
@@ -20,6 +20,9 @@
             <Button layoutX="10.0" layoutY="383.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Deep Work" />
             <Button layoutX="10.0" layoutY="396.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Eisenhower Matrix" />
          </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
    <center>
@@ -39,7 +42,7 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="362.0" text="Add card">
+                  <Button mnemonicParsing="false" onAction="#onTodoAddCardClicked" prefHeight="70.0" prefWidth="362.0" text="Add card">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
@@ -59,7 +62,7 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="362.0" text="Add card">
+                  <Button mnemonicParsing="false" onAction="#onOngoingAddCardClicked" prefHeight="70.0" prefWidth="362.0" text="Add card">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
@@ -86,19 +89,6 @@
                   </Button>
                </children>
             </VBox>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="344.0" layoutY="10.0" prefHeight="720.0" prefWidth="265.0" HBox.hgrow="ALWAYS">
-               <content>
-                  <VBox fx:id="miscVbox" prefHeight="718.0" prefWidth="246.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="283.0" text="Add another list">
-                           <VBox.margin>
-                              <Insets top="45.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
          </children>
       </HBox>
    </center>
@@ -108,4 +98,22 @@
    <bottom>
       <AnchorPane prefHeight="25.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <right>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="659.0" prefWidth="180.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="miscVbox" prefHeight="683.0" prefWidth="264.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onAddAnotherListClicked" prefHeight="26.0" prefWidth="283.0" text="Add another list">
+                     <VBox.margin>
+                        <Insets top="45.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </content>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </ScrollPane>
+   </right>
 </BorderPane>

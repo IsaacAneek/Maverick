@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox prefHeight="711.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="18.0" prefWidth="383.0" style="-fx-background-color: #232323; -fx-font-weight: bold;" text="List1" />
+      <ScrollPane hbarPolicy="NEVER" prefHeight="672.0" prefWidth="326.0" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="doneVbox" prefHeight="666.0" prefWidth="326.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="372.0" text="Label" />
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="392.0" text="Label" />
+                  <Label layoutX="10.0" layoutY="28.0" prefHeight="18.0" prefWidth="338.0" text="Label" />
+                  <Label layoutX="10.0" layoutY="47.0" prefHeight="18.0" prefWidth="374.0" text="Label" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="345.0" text="Add card">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
