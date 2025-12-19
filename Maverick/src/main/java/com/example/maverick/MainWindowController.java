@@ -5,12 +5,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.io.Serial;
 
 
 public class MainWindowController {
@@ -21,27 +24,60 @@ public class MainWindowController {
     @FXML private VBox miscVbox;
 
     @FXML
-    protected void onTodoAddCardClicked(ActionEvent event) {
-        TextField text = new TextField();
-        text.setPrefWidth(todoVbox.getWidth() - 10);
-        text.setMaxWidth(Double.MAX_VALUE);
-        todoVbox.getChildren().add(text);
+    protected void onTodoAddCardClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+        HBox loadedView = (HBox) fxmlLoader.load();
+        Button btn = (Button) loadedView.getChildren().get(1);
+        btn.setOnAction(evt -> {
+            Node currentClickedButton = (Node) evt.getSource();
+            HBox currentTask = (HBox) currentClickedButton.getParent();
+            ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+            VBox currentVBox = (VBox) pane.getParent();
+            int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+            VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+            VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+            nextList.getChildren().add(currentTask);
+            System.out.println(pane.toString());
+        });
+        todoVbox.getChildren().add(loadedView);
     }
 
     @FXML
-    protected void onOngoingAddCardClicked(ActionEvent event) {
-        TextField text = new TextField();
-        text.setPrefWidth(todoVbox.getWidth() - 10);
-        text.setMaxWidth(Double.MAX_VALUE);
-        ongoingVbox.getChildren().add(text);
+    protected void onOngoingAddCardClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+        HBox loadedView = (HBox) fxmlLoader.load();
+        Button btn = (Button) loadedView.getChildren().get(1);
+        btn.setOnAction(evt -> {
+            Node currentClickedButton = (Node) evt.getSource();
+            HBox currentTask = (HBox) currentClickedButton.getParent();
+            ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+            VBox currentVBox = (VBox) pane.getParent();
+            int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+            VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+            VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+            nextList.getChildren().add(currentTask);
+            System.out.println(pane.toString());
+        });
+        ongoingVbox.getChildren().add(loadedView);
     }
 
     @FXML
-    protected void onDoneAddCardClicked(ActionEvent event) {
-        TextField text = new TextField();
-        text.setPrefWidth(todoVbox.getWidth() - 10);
-        text.setMaxWidth(Double.MAX_VALUE);
-        doneVbox.getChildren().add(text);
+    protected void onDoneAddCardClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+        HBox loadedView = (HBox) fxmlLoader.load();
+        Button btn = (Button) loadedView.getChildren().get(1);
+        btn.setOnAction(evt -> {
+            Node currentClickedButton = (Node) evt.getSource();
+            HBox currentTask = (HBox) currentClickedButton.getParent();
+            ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+            VBox currentVBox = (VBox) pane.getParent();
+            int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+            VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+            VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+            nextList.getChildren().add(currentTask);
+            System.out.println(pane.toString());
+        });
+        doneVbox.getChildren().add(loadedView);
     }
 
     @FXML
@@ -50,6 +86,19 @@ public class MainWindowController {
         Node loadedView = (Node) fxmlLoader.load();
         //loadedView.maxWidth(Double.MAX_VALUE);
         dashboardHbox.getChildren().add(loadedView);
+    }
+
+    @FXML
+    protected void onMoveToNextListClicked(ActionEvent event) throws IOException {
+        Node currentClickedButton = (Node) event.getSource();
+        HBox currentTask = (HBox) currentClickedButton.getParent();
+        ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+        VBox currentVBox = (VBox) pane.getParent();
+        int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+        VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+        VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+        nextList.getChildren().add(currentTask);
+        System.out.println(pane.toString());
     }
 
 }

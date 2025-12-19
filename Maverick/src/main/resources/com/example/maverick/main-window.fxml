@@ -36,6 +36,12 @@
                         <VBox fx:id="todoVbox" prefHeight="711.0" prefWidth="326.0">
                            <children>
                               <TextField layoutX="15.0" layoutY="20.0" promptText="Enter your task" />
+                              <HBox minHeight="14.0" prefHeight="38.0" prefWidth="340.0" style="-fx-spacing: 5;">
+                                 <children>
+                                    <TextField prefHeight="117.0" prefWidth="202.0" promptText="Enter your task" />
+                                    <Button mnemonicParsing="false" onAction="#onMoveToNextListClicked" prefHeight="146.0" prefWidth="40.0" styleClass="taskListButton" text="Button" />
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </content>

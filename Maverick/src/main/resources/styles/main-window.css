@@ -12,14 +12,14 @@
 .text-field {
     -fx-background-color: #515151;
     -fx-text-fill: white;
-    -fx-background-radius: 2px;
+    -fx-background-radius: 0px;
     -fx-padding: 10px;
 }
 
 .taskListTitleLabel {
     -fx-background-color: #515151;
     -fx-text-fill: white;
-    -fx-background-radius: 2px;
+    -fx-background-radius: 0px;
     -fx-padding: 10px;
 }
 
@@ -28,6 +28,10 @@
     -fx-spacing: 10px;
     -fx-background-radius: 3px;
     -fx-background-color: #232323;
+}
+
+.button {
+    -fx-background-radius: 0px;
 }
 
 .button:hover {
