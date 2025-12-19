@@ -101,4 +101,11 @@ public class MainWindowController {
         System.out.println(pane.toString());
     }
 
+    @FXML
+    protected void onEisenhowerButtonClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("eisenhower-view.fxml"));
+        Parent loadedView = fxmlLoader.load();
+        dashboardHbox.getChildren().setAll(loadedView);
+    }
+
 }
