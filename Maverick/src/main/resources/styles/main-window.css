@@ -9,7 +9,14 @@
     -fx-text-fill: white;
 }
 
-.label {
+.text-field {
+    -fx-background-color: #515151;
+    -fx-text-fill: white;
+    -fx-background-radius: 2px;
+    -fx-padding: 10px;
+}
+
+.taskListTitleLabel {
     -fx-background-color: #515151;
     -fx-text-fill: white;
     -fx-background-radius: 2px;
