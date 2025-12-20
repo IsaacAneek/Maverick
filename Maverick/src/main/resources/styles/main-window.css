@@ -88,10 +88,20 @@ ScrollPane {
 
 .menu-bar {
     -fx-background-color: #232323;
+    -fx-padding: 5px 0px 5px 10px;
 }
 
 .context-menu {
     -fx-background-color: #232323;
+}
+
+VBox {
+    -fx-spacing: 5px;
+}
+
+ScrollPane {
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
 }
 
 .menu-bar .label {
