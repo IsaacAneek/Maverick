@@ -1,9 +1,9 @@
 package com.example.maverick;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.Console;
+import java.io.Serial;
+import java.sql.*;
+import java.util.Objects;
 
 public class Model {
     public Connection connection;
@@ -14,6 +14,9 @@ public class Model {
         String kanban_table_SQL = "CREATE TABLE IF NOT EXISTS kanbanBoard (description TEXT, status TEXT NOT NULL)";
         Statement statement = connection.createStatement();
         statement.executeUpdate(kanban_table_SQL);
+        String eisenhower_table_SQL = "CREATE TABLE IF NOT EXISTS kanbanBoard (description TEXT, importance TEXT NOT NULL, urgentness TEXT NOT NULL)";
+        statement = connection.createStatement();
+        statement.executeUpdate(eisenhower_table_SQL);
     }
 
     public void saveKanban(KanbanBoard kanbanBoard) throws SQLException {
@@ -48,5 +51,25 @@ public class Model {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    public KanbanBoard loadKanban() throws SQLException {
+        KanbanBoard kanbanBoard = new KanbanBoard();
+        String get_SQL = "SELECT * FROM kanbanBoard";
+        PreparedStatement preparedStatement = connection.prepareStatement(get_SQL);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            if(Objects.equals(resultSet.getString("status"), "TODO")) {
+                kanbanBoard.TODOList.add(resultSet.getString("description"));
+                System.out.println("TODO");
+            }
+            else if(Objects.equals(resultSet.getString("status"), "ONGOING")) {
+                kanbanBoard.OngoingList.add(resultSet.getString("description"));
+            }
+            else if(Objects.equals(resultSet.getString("status"), "DONE")) {
+                kanbanBoard.DoneList.add(resultSet.getString("description"));
+            }
+        }
+        return kanbanBoard;
     }
 }

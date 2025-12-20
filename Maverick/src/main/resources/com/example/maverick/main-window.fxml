@@ -16,7 +16,7 @@
    <left>
       <VBox fx:id="sideBarVbox" alignment="CENTER" prefHeight="670.0" prefWidth="183.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="220.0" text="Kanban Board" />
+            <Button mnemonicParsing="false" onAction="#onKanbanBoardButtonClicked" prefHeight="26.0" prefWidth="220.0" text="Kanban Board" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="252.0" text="Warren Buffets 5-25 rule" />
             <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Pomodoro" />
             <Button layoutX="10.0" layoutY="383.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Deep Work" />

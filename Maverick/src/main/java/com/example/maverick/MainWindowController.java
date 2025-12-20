@@ -1,5 +1,7 @@
 package com.example.maverick;
 
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,10 +26,89 @@ public class MainWindowController {
     @FXML private HBox dashboardHbox;
     @FXML private VBox miscVbox;
 
+    private ObservableList<Node> kanbanView;
     private Model model;
 
     public MainWindowController() throws SQLException {
         model = new Model();
+    }
+
+    @FXML
+    private void initialize() throws SQLException {
+        KanbanBoard kanbanBoard = model.loadKanban();
+        kanbanBoard.TODOList.forEach(task -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+            HBox loadedView = null;
+            try {
+                loadedView = (HBox) fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            TextField txtField = (TextField) loadedView.getChildren().get(0);
+            txtField.setText(task);
+            Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
+            btn.setOnAction(evt -> {
+                Node currentClickedButton = (Node) evt.getSource();
+                HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
+                ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+                VBox currentVBox = (VBox) pane.getParent();
+                int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+                VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+                VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+                nextList.getChildren().add(currentTask);
+                System.out.println(pane.toString());
+            });
+            todoVbox.getChildren().add(loadedView);
+        });
+        kanbanBoard.OngoingList.forEach(task -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+            HBox loadedView = null;
+            try {
+                loadedView = (HBox) fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            TextField txtField = (TextField) loadedView.getChildren().get(0);
+            txtField.setText(task);
+            Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
+            btn.setOnAction(evt -> {
+                Node currentClickedButton = (Node) evt.getSource();
+                HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
+                ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+                VBox currentVBox = (VBox) pane.getParent();
+                int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+                VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+                VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+                nextList.getChildren().add(currentTask);
+                System.out.println(pane.toString());
+            });
+            ongoingVbox.getChildren().add(loadedView);
+        });
+
+        kanbanBoard.DoneList.forEach(task -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+            HBox loadedView = null;
+            try {
+                loadedView = (HBox) fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            TextField txtField = (TextField) loadedView.getChildren().get(0);
+            txtField.setText(task);
+            Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
+            btn.setOnAction(evt -> {
+                Node currentClickedButton = (Node) evt.getSource();
+                HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
+                ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
+                VBox currentVBox = (VBox) pane.getParent();
+                int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
+                VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
+                VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
+                nextList.getChildren().add(currentTask);
+                System.out.println(pane.toString());
+            });
+            doneVbox.getChildren().add(loadedView);
+        });
     }
 
     @FXML
@@ -109,9 +190,18 @@ public class MainWindowController {
     }
 
     @FXML
+    protected void onKanbanBoardButtonClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-view.fxml"));
+        Parent loadedView = fxmlLoader.load();
+        kanbanView = dashboardHbox.getChildren();
+        dashboardHbox.getChildren().setAll(loadedView);
+    }
+
+    @FXML
     protected void onEisenhowerButtonClicked(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("eisenhower-view.fxml"));
         Parent loadedView = fxmlLoader.load();
+        kanbanView = dashboardHbox.getChildren();
         dashboardHbox.getChildren().setAll(loadedView);
     }
 
