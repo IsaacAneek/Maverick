@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -36,17 +35,7 @@
                   <Label maxWidth="1.7976931348623157E308" prefHeight="36.0" style="-fx-background-color: #232323; -fx-font-weight: bold;" styleClass="taskListTitleLabel" text="TODO" />
                   <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="763.0" prefWidth="310.0">
                      <content>
-                        <VBox fx:id="todoVbox" prefHeight="711.0" prefWidth="326.0">
-                           <children>
-                              <TextField layoutX="15.0" layoutY="20.0" promptText="Enter your task" />
-                              <HBox minHeight="14.0" prefHeight="38.0" prefWidth="340.0" style="-fx-spacing: 5;">
-                                 <children>
-                                    <TextField prefHeight="117.0" prefWidth="202.0" promptText="Enter your task" />
-                                    <Button mnemonicParsing="false" onAction="#onMoveToNextListClicked" prefHeight="146.0" prefWidth="40.0" styleClass="taskListButton" text="Button" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                        <VBox fx:id="todoVbox" prefHeight="711.0" prefWidth="326.0" />
                      </content>
                   </ScrollPane>
                   <Button mnemonicParsing="false" onAction="#onTodoAddCardClicked" prefHeight="70.0" prefWidth="362.0" text="Add card">
@@ -61,11 +50,7 @@
                   <Label contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" style="-fx-background-color: #232323; -fx-font-weight: bold;" styleClass="taskListTitleLabel" text="Ongoing" />
                   <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="763.0" prefWidth="310.0">
                      <content>
-                        <VBox fx:id="ongoingVbox" prefHeight="711.0" prefWidth="326.0">
-                           <children>
-                              <TextField promptText="Enter your task" />
-                           </children>
-                        </VBox>
+                        <VBox fx:id="ongoingVbox" prefHeight="711.0" prefWidth="326.0" />
                      </content>
                   </ScrollPane>
                   <Button mnemonicParsing="false" onAction="#onOngoingAddCardClicked" prefHeight="70.0" prefWidth="362.0" text="Add card">
@@ -80,11 +65,7 @@
                   <Label contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="18.0" style="-fx-background-color: #232323; -fx-font-weight: bold;" styleClass="taskListTitleLabel" text="Done" />
                   <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="763.0" prefWidth="310.0">
                      <content>
-                        <VBox fx:id="doneVbox" prefHeight="711.0" prefWidth="326.0">
-                           <children>
-                              <TextField promptText="Enter your task" />
-                           </children>
-                        </VBox>
+                        <VBox fx:id="doneVbox" prefHeight="711.0" prefWidth="326.0" />
                      </content>
                   </ScrollPane>
                   <Button mnemonicParsing="false" onAction="#onDoneAddCardClicked" prefHeight="70.0" prefWidth="362.0" text="Add card">
@@ -105,7 +86,7 @@
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Open" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#onSaveClicked" text="Save" />
                         <MenuItem mnemonicParsing="false" text="Save as" />
                         <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
