@@ -1,13 +1,13 @@
 #dashBoardGridPane .label {
     -fx-background-color: #515151;
     -fx-text-fill: white;
-    -fx-background-radius: 0px;
+    -fx-background-radius: 3px;
     -fx-padding: 5px;
 }
 
 #dashBoardGridPane {
-    -fx-hgap: 0px;
-    -fx-vgap: 0px;
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
 }
 
 .button:hover {
@@ -22,14 +22,22 @@
 .button {
     -fx-background-color: #515151;
     -fx-text-fill: white;
-    -fx-background-radius: 0px;
+    -fx-background-radius: 3px;
 }
 
 .text-field {
     -fx-background-color: #515151;
     -fx-text-fill: white;
-    -fx-background-radius: 0px;
+    -fx-background-radius: 3px;
     -fx-padding: 5px;
+}
+
+HBox {
+    -fx-spacing: 10px;
+}
+
+VBox {
+    -fx-spacing: 10px;
 }
 
 StackPane {
