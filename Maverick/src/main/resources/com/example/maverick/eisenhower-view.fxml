@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="664.0" prefWidth="870.4" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25">
+<GridPane fx:id="dashBoardGridPane" prefHeight="650.0" prefWidth="860.4" stylesheets="@../../../styles/eisenhower-view.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.maverick.EisenhowerViewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,49 +19,57 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox prefHeight="270.0" prefWidth="435.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <StackPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="38.0">
+            <StackPane minWidth="-Infinity" prefHeight="333.0" prefWidth="28.0">
                <children>
-                  <TextField alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="340.0" rotate="-90.0" text="Important" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" prefHeight="18.0" prefWidth="129.0" rotate="-90.0" text="Important" />
                </children>
             </StackPane>
-            <VBox alignment="CENTER" prefHeight="303.0" prefWidth="398.0">
+            <VBox alignment="CENTER" prefHeight="326.0" prefWidth="414.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="74.0" prefWidth="398.0" text="Urgent" />
-                  <VBox prefHeight="322.0" prefWidth="398.0" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="350.0" text="Add todo" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="26.0" prefWidth="402.0" text="Urgent" />
+                  <VBox prefHeight="298.0" prefWidth="392.0" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddImportantUrgentClicked" prefHeight="26.0" prefWidth="365.0" text="Add todo" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="10.0" layoutY="9.0" prefHeight="327.0" prefWidth="435.0" GridPane.rowIndex="1">
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <StackPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="38.0">
+            <StackPane minWidth="-Infinity" prefHeight="333.0" prefWidth="28.0">
                <children>
-                  <TextField alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="327.0" rotate="-90.0" text="Not Important" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" prefHeight="18.0" prefWidth="129.0" rotate="-90.0" text="Not Important" />
                </children>
             </StackPane>
-            <VBox alignment="CENTER" prefHeight="322.0" prefWidth="397.0">
+            <VBox alignment="CENTER" prefHeight="326.0" prefWidth="414.0">
                <children>
-                  <VBox prefHeight="322.0" prefWidth="397.0" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="350.0" text="Add todo" />
+                  <VBox prefHeight="308.0" prefWidth="422.0" />
+                  <Button mnemonicParsing="false" onAction="#onNotImportantUrgentClicked" prefHeight="26.0" prefWidth="365.0" text="Add todo" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="201.0" prefWidth="307.0" GridPane.columnIndex="1">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="342.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="74.0" prefWidth="435.0" text="Urgent" />
-            <VBox prefHeight="322.0" prefWidth="435.0" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="350.0" text="Add todo" />
+            <VBox alignment="CENTER" prefHeight="333.0" prefWidth="462.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="26.0" prefWidth="466.0" text="Not Urgent" />
+                  <VBox prefHeight="308.0" prefWidth="435.0" />
+                  <Button mnemonicParsing="false" onAction="#onAddImportantNotUrgentClicked" prefHeight="26.0" prefWidth="365.0" text="Add todo" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" prefHeight="201.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      </HBox>
+      <HBox layoutX="445.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <VBox prefHeight="322.0" prefWidth="435.0" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="350.0" text="Add todo" />
+            <VBox alignment="CENTER" prefHeight="333.0" prefWidth="462.0">
+               <children>
+                  <VBox prefHeight="308.0" prefWidth="435.0" />
+                  <Button mnemonicParsing="false" onAction="#onNotImportantNotUrgentClicked" prefHeight="26.0" prefWidth="365.0" text="Add todo" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </GridPane>

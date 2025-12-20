@@ -87,3 +87,35 @@ ScrollPane {
 .scroll-bar:vertical .thumb {
     -fx-background-color: #232323;
 }
+
+.menu-bar {
+    -fx-background-color: #232323;
+}
+
+.context-menu {
+    -fx-background-color: #232323;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+    -fx-background-radius: 0px;
+}
+
+.menu-item {
+    -fx-background-color: #232323;
+}
+
+.menu:hover {
+    -fx-background-color: #ffc400;
+    -fx-text-fill: black;
+}
+
+.menu:pressed {
+    -fx-background-color: #ffc400;
+    -fx-text-fill: black;
+}
+
+.menu-item:hover {
+    -fx-background-color: #ffc400;
+    -fx-text-fill: black;
+}

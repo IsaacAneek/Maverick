@@ -1,0 +1,38 @@
+#dashBoardGridPane .label {
+    -fx-background-color: #515151;
+    -fx-text-fill: white;
+    -fx-background-radius: 0px;
+    -fx-padding: 5px;
+}
+
+#dashBoardGridPane {
+    -fx-hgap: 0px;
+    -fx-vgap: 0px;
+}
+
+.button:hover {
+    -fx-background-color: #ffc400;
+    -fx-text-fill: black;
+}
+
+.button:pressed {
+    -fx-background-color: #b38a00;
+}
+
+.button {
+    -fx-background-color: #515151;
+    -fx-text-fill: white;
+    -fx-background-radius: 0px;
+}
+
+.text-field {
+    -fx-background-color: #515151;
+    -fx-text-fill: white;
+    -fx-background-radius: 0px;
+    -fx-padding: 5px;
+}
+
+StackPane {
+    -fx-background-color: #515151;
+}
+
