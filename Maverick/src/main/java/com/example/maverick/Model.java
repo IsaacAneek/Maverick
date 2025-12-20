@@ -14,7 +14,7 @@ public class Model {
         String kanban_table_SQL = "CREATE TABLE IF NOT EXISTS kanbanBoard (description TEXT, status TEXT NOT NULL)";
         Statement statement = connection.createStatement();
         statement.executeUpdate(kanban_table_SQL);
-        String eisenhower_table_SQL = "CREATE TABLE IF NOT EXISTS kanbanBoard (description TEXT, importance TEXT NOT NULL, urgentness TEXT NOT NULL)";
+        String eisenhower_table_SQL = "CREATE TABLE IF NOT EXISTS eisenhowerMatrix (description TEXT, importance TEXT NOT NULL, urgentness TEXT NOT NULL)";
         statement = connection.createStatement();
         statement.executeUpdate(eisenhower_table_SQL);
     }
