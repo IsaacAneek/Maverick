@@ -19,6 +19,54 @@ public class Model {
         statement.executeUpdate(eisenhower_table_SQL);
     }
 
+    public void saveEisenhower(EisenhowerMatrix eisenhowerMatrix) throws SQLException {
+        String insert_SQL = "INSERT INTO eisenhowerMatrix (description, importance, urgentness) VALUES (?, ?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(insert_SQL);
+        eisenhowerMatrix.ImportantUrgentList.forEach(task -> {
+            try {
+                preparedStatement.setString(1, task);
+                preparedStatement.setString(2, "IMPORTANT");
+                preparedStatement.setString(3, "URGENT");
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        eisenhowerMatrix.ImportantNotUrgentList.forEach(task -> {
+            try {
+                preparedStatement.setString(1, task);
+                preparedStatement.setString(2, "IMPORTANT");
+                preparedStatement.setString(3, "NOTURGENT");
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        eisenhowerMatrix.NotImportantUrgentList.forEach(task -> {
+            try {
+                preparedStatement.setString(1, task);
+                preparedStatement.setString(2, "NOTIMPORTANT");
+                preparedStatement.setString(3, "URGENT");
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        eisenhowerMatrix.NotImportantNotUrgentList.forEach(task -> {
+            try {
+                preparedStatement.setString(1, task);
+                preparedStatement.setString(2, "NOTIMPORTANT");
+                preparedStatement.setString(3, "NOTURGENT");
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
     public void saveKanban(KanbanBoard kanbanBoard) throws SQLException {
         String insert_SQL = "INSERT INTO kanbanBoard (description, status) VALUES (?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(insert_SQL);

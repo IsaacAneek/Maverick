@@ -29,7 +29,7 @@
             <VBox alignment="CENTER" prefHeight="326.0" prefWidth="414.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="26.0" prefWidth="402.0" text="Urgent" />
-                  <VBox prefHeight="298.0" prefWidth="392.0" />
+                  <VBox fx:id="importantUrgentVBox" prefHeight="298.0" prefWidth="392.0" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddImportantUrgentClicked" prefHeight="26.0" prefWidth="396.0" text="Add todo" />
                </children>
             </VBox>
@@ -44,7 +44,7 @@
             </StackPane>
             <VBox alignment="CENTER" prefHeight="326.0" prefWidth="414.0">
                <children>
-                  <VBox prefHeight="308.0" prefWidth="422.0" />
+                  <VBox fx:id="notImportantUrgentVBox" prefHeight="308.0" prefWidth="422.0" />
                   <Button mnemonicParsing="false" onAction="#onNotImportantUrgentClicked" prefHeight="26.0" prefWidth="406.0" text="Add todo" />
                </children>
             </VBox>
@@ -55,7 +55,7 @@
             <VBox alignment="CENTER" prefHeight="333.0" prefWidth="462.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="26.0" prefWidth="466.0" text="Not Urgent" />
-                  <VBox prefHeight="308.0" prefWidth="435.0" />
+                  <VBox fx:id="importantNotUrgentVBox" prefHeight="308.0" prefWidth="435.0" />
                   <Button mnemonicParsing="false" onAction="#onAddImportantNotUrgentClicked" prefHeight="26.0" prefWidth="450.0" text="Add todo" />
                </children>
             </VBox>
@@ -65,7 +65,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="333.0" prefWidth="462.0">
                <children>
-                  <VBox prefHeight="308.0" prefWidth="435.0" />
+                  <VBox fx:id="notImportantNotUrgentVBox" prefHeight="308.0" prefWidth="435.0" />
                   <Button mnemonicParsing="false" onAction="#onNotImportantNotUrgentClicked" prefHeight="26.0" prefWidth="442.0" text="Add todo" />
                </children>
             </VBox>
