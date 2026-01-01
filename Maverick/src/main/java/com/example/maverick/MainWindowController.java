@@ -39,22 +39,18 @@ public class MainWindowController {
 
     }
 
+    public HBox getDashboardHbox() {
+        return dashboardHbox;
+    }
+
     @FXML
     protected void onTodoAddCardClicked(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
         HBox loadedView = (HBox) fxmlLoader.load();
-        Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
-        btn.setOnAction(evt -> {
-            Node currentClickedButton = (Node) evt.getSource();
-            HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
-            ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-            VBox currentVBox = (VBox) pane.getParent();
-            int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-            VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-            VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-            nextList.getChildren().add(currentTask);
-            System.out.println(pane.toString());
-        });
+
+        CardViewController cardViewController = fxmlLoader.getController();
+        cardViewController.setMainViewController(this);
+
         todoVbox.getChildren().add(loadedView);
     }
 
@@ -62,18 +58,10 @@ public class MainWindowController {
     protected void onOngoingAddCardClicked(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
         HBox loadedView = (HBox) fxmlLoader.load();
-        Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
-        btn.setOnAction(evt -> {
-            Node currentClickedButton = (Node) evt.getSource();
-            HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
-            ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-            VBox currentVBox = (VBox) pane.getParent();
-            int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-            VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-            VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-            nextList.getChildren().add(currentTask);
-            System.out.println(pane.toString());
-        });
+
+        CardViewController cardViewController = fxmlLoader.getController();
+        cardViewController.setMainViewController(this);
+
         ongoingVbox.getChildren().add(loadedView);
     }
 
@@ -81,18 +69,10 @@ public class MainWindowController {
     protected void onDoneAddCardClicked(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
         HBox loadedView = (HBox) fxmlLoader.load();
-        Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
-        btn.setOnAction(evt -> {
-            Node currentClickedButton = (Node) evt.getSource();
-            HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
-            ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-            VBox currentVBox = (VBox) pane.getParent();
-            int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-            VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-            VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-            nextList.getChildren().add(currentTask);
-            System.out.println(pane.toString());
-        });
+
+        CardViewController cardViewController = fxmlLoader.getController();
+        cardViewController.setMainViewController(this);
+
         doneVbox.getChildren().add(loadedView);
     }
 
@@ -102,19 +82,6 @@ public class MainWindowController {
         Node loadedView = (Node) fxmlLoader.load();
         //loadedView.maxWidth(Double.MAX_VALUE);
         dashboardHbox.getChildren().add(loadedView);
-    }
-
-    @FXML
-    protected void onMoveToNextListClicked(ActionEvent event) throws IOException {
-        Node currentClickedButton = (Node) event.getSource();
-        HBox currentTask = (HBox) currentClickedButton.getParent();
-        ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-        VBox currentVBox = (VBox) pane.getParent();
-        int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-        VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-        VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-        nextList.getChildren().add(currentTask);
-        System.out.println(pane.toString());
     }
 
     @FXML
@@ -147,18 +114,10 @@ public class MainWindowController {
             }
             TextField txtField = (TextField) loadedView.getChildren().get(0);
             txtField.setText(task);
-            Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
-            btn.setOnAction(evt -> {
-                Node currentClickedButton = (Node) evt.getSource();
-                HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
-                ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-                VBox currentVBox = (VBox) pane.getParent();
-                int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-                VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-                VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-                nextList.getChildren().add(currentTask);
-                System.out.println(pane.toString());
-            });
+
+            CardViewController cardViewController = fxmlLoader.getController();
+            cardViewController.setMainViewController(this);
+
             todoVbox.getChildren().add(loadedView);
         });
         kanbanBoard.OngoingList.forEach(task -> {
@@ -171,18 +130,10 @@ public class MainWindowController {
             }
             TextField txtField = (TextField) loadedView.getChildren().get(0);
             txtField.setText(task);
-            Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
-            btn.setOnAction(evt -> {
-                Node currentClickedButton = (Node) evt.getSource();
-                HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
-                ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-                VBox currentVBox = (VBox) pane.getParent();
-                int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-                VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-                VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-                nextList.getChildren().add(currentTask);
-                System.out.println(pane.toString());
-            });
+
+            CardViewController cardViewController = fxmlLoader.getController();
+            cardViewController.setMainViewController(this);
+
             ongoingVbox.getChildren().add(loadedView);
         });
 
@@ -196,18 +147,10 @@ public class MainWindowController {
             }
             TextField txtField = (TextField) loadedView.getChildren().get(0);
             txtField.setText(task);
-            Button btn = (Button) ((HBox) loadedView.getChildren().get(1)).getChildren().get(1);
-            btn.setOnAction(evt -> {
-                Node currentClickedButton = (Node) evt.getSource();
-                HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
-                ScrollPane pane = (ScrollPane) currentTask.getParent().getParent().getParent().getParent();
-                VBox currentVBox = (VBox) pane.getParent();
-                int currentVBoxIndex = dashboardHbox.getChildren().indexOf(currentVBox);
-                VBox nextVbox =  (VBox) dashboardHbox.getChildren().get(currentVBoxIndex + 1);
-                VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
-                nextList.getChildren().add(currentTask);
-                System.out.println(pane.toString());
-            });
+
+            CardViewController cardViewController = fxmlLoader.getController();
+            cardViewController.setMainViewController(this);
+
             doneVbox.getChildren().add(loadedView);
         });
         System.out.println("Kanban loaded");
