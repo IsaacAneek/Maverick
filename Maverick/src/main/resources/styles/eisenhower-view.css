@@ -53,3 +53,23 @@ StackPane {
     -fx-background-color: #515151;
 }
 
+#colorPicker .label{
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+#colorPicker .button{
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+#colorPicker .menu{
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+#colorPicker .combo-box{
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+

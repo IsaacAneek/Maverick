@@ -45,7 +45,7 @@ public class MainWindowController {
 
     @FXML
     protected void onTodoAddCardClicked(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-card.fxml"));
         HBox loadedView = (HBox) fxmlLoader.load();
 
         CardViewController cardViewController = fxmlLoader.getController();
@@ -56,7 +56,7 @@ public class MainWindowController {
 
     @FXML
     protected void onOngoingAddCardClicked(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-card.fxml"));
         HBox loadedView = (HBox) fxmlLoader.load();
 
         CardViewController cardViewController = fxmlLoader.getController();
@@ -67,7 +67,7 @@ public class MainWindowController {
 
     @FXML
     protected void onDoneAddCardClicked(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-card.fxml"));
         HBox loadedView = (HBox) fxmlLoader.load();
 
         CardViewController cardViewController = fxmlLoader.getController();
@@ -105,7 +105,7 @@ public class MainWindowController {
     protected void onLoadClicked(ActionEvent event) throws IOException, SQLException {
         KanbanBoard kanbanBoard = model.loadKanban();
         kanbanBoard.TODOList.forEach(task -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-card.fxml"));
             HBox loadedView = null;
             try {
                 loadedView = (HBox) fxmlLoader.load();
@@ -121,7 +121,7 @@ public class MainWindowController {
             todoVbox.getChildren().add(loadedView);
         });
         kanbanBoard.OngoingList.forEach(task -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-card.fxml"));
             HBox loadedView = null;
             try {
                 loadedView = (HBox) fxmlLoader.load();
@@ -138,7 +138,7 @@ public class MainWindowController {
         });
 
         kanbanBoard.DoneList.forEach(task -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-card.fxml"));
             HBox loadedView = null;
             try {
                 loadedView = (HBox) fxmlLoader.load();
