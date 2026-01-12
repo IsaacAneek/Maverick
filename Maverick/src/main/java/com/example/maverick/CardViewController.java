@@ -1,11 +1,16 @@
 package com.example.maverick;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class CardViewController {
@@ -81,5 +86,26 @@ public class CardViewController {
         }
     }
 
+
+    public void onStartPomodoroButtonClicked(ActionEvent actionEvent) {
+        try {
+            Button button = (Button) actionEvent.getSource();
+            HBox card = (HBox) button.getParent().getParent();
+            TextField taskField = (TextField) card.getChildren().get(0);
+            String taskTitle = taskField.getText();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pomodoro_view.fxml"));
+            Parent loadedView = loader.load();
+
+            PomodoroViewController controller = loader.getController();
+            controller.taskTitleLabel.setText(taskTitle);
+            controller.onFocusButtonClicked(null);
+
+            mainWindowController.getDashboardHbox().getChildren().setAll(loadedView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

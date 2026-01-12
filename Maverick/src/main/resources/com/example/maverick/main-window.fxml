@@ -18,7 +18,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#onKanbanBoardButtonClicked" prefHeight="26.0" prefWidth="220.0" text="Kanban Board" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="252.0" text="Warren Buffets 5-25 rule" />
-            <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Pomodoro" />
+            <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#onPomodoroButtonClicked" prefHeight="26.0" prefWidth="215.0" text="Pomodoro" />
             <Button layoutX="10.0" layoutY="383.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Deep Work" />
             <Button layoutX="10.0" layoutY="396.0" mnemonicParsing="false" onAction="#onEisenhowerButtonClicked" prefHeight="26.0" prefWidth="215.0" text="Eisenhower Matrix" />
          </children>
