@@ -35,8 +35,15 @@ public class MainWindowController {
     }
 
     @FXML
-    private void initialize() throws SQLException {
-
+    private void initialize() throws SQLException, IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-view.fxml"));
+        Parent loadedView = fxmlLoader.load();
+        KanbanViewController kanbanViewController = fxmlLoader.getController();
+        KanbanBoard kanbanBoard = model.loadKanban();
+        kanbanViewController.setMainWindowController(this);
+        kanbanViewController.setKanbanBoard(kanbanBoard);
+        //kanbanView = dashboardHbox.getChildren();
+        dashboardHbox.getChildren().setAll(loadedView);
     }
 
     public HBox getDashboardHbox() {
@@ -85,21 +92,30 @@ public class MainWindowController {
     }
 
     @FXML
-    protected void onKanbanBoardButtonClicked(ActionEvent event) throws IOException {
+    protected void onKanbanBoardButtonClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kanban-view.fxml"));
         Parent loadedView = fxmlLoader.load();
+        KanbanViewController kanbanViewController = fxmlLoader.getController();
+        KanbanBoard kanbanBoard = model.loadKanban();
+        kanbanViewController.setMainWindowController(this);
+        kanbanViewController.setKanbanBoard(kanbanBoard);
         //kanbanView = dashboardHbox.getChildren();
         dashboardHbox.getChildren().setAll(loadedView);
     }
 
     @FXML
-    protected void onEisenhowerButtonClicked(ActionEvent event) throws IOException {
+    protected void onEisenhowerButtonClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("eisenhower-view.fxml"));
         Parent loadedView = fxmlLoader.load();
         //kanbanView = dashboardHbox.getChildren();
         eisenhowerViewController = fxmlLoader.getController();
+
+        EisenhowerMatrix matrix = model.loadEisenhower();
+        eisenhowerViewController.setEisenhowerMatrix(matrix);
+
         dashboardHbox.getChildren().setAll(loadedView);
     }
+
 
     @FXML
     protected void onLoadClicked(ActionEvent event) throws IOException, SQLException {

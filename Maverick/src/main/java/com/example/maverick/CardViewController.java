@@ -10,6 +10,11 @@ import javafx.scene.layout.VBox;
 
 public class CardViewController {
     private MainWindowController mainWindowController;
+    private KanbanViewController kanbanController;
+
+    public void setKanbanController(KanbanViewController controller) {
+        this.kanbanController = controller;
+    }
 
     public void setMainViewController (MainWindowController _mainWindowController) {
         mainWindowController = _mainWindowController;
@@ -21,7 +26,7 @@ public class CardViewController {
         hboxContainer.getChildren().remove(hbox);
     }
 
-    public void onMoveRightButtonClicked(ActionEvent evt) {
+/*    public void onMoveRightButtonClicked(ActionEvent evt) {
         HBox dashboardHbox = mainWindowController.getDashboardHbox();
         Node currentClickedButton = (Node) evt.getSource();
         HBox currentTask = (HBox) currentClickedButton.getParent().getParent();
@@ -32,8 +37,10 @@ public class CardViewController {
         VBox nextList = (VBox) ((ScrollPane) nextVbox.getChildren().get(1)).getContent();
         nextList.getChildren().add(currentTask);
         System.out.println(pane.toString());
-    }
+    }*/
 
+
+/*
     public void onMoveLeftButtonClicked(ActionEvent evt) {
         HBox dashboardHbox = mainWindowController.getDashboardHbox();
         Node currentClickedButton = (Node) evt.getSource();
@@ -46,4 +53,33 @@ public class CardViewController {
         nextList.getChildren().add(currentTask);
         System.out.println(pane.toString());
     }
+*/
+
+    public void onMoveRightButtonClicked(ActionEvent evt) {
+        HBox card = (HBox) ((Button) evt.getSource()).getParent().getParent();
+        VBox currentBox = (VBox) card.getParent();
+
+        if (currentBox == kanbanController.todoVbox) {
+            kanbanController.todoVbox.getChildren().remove(card);
+            kanbanController.ongoingVbox.getChildren().add(card);
+        } else if (currentBox == kanbanController.ongoingVbox) {
+            kanbanController.ongoingVbox.getChildren().remove(card);
+            kanbanController.doneVbox.getChildren().add(card);
+        }
+    }
+
+    public void onMoveLeftButtonClicked(ActionEvent evt) {
+        HBox card = (HBox) ((Button) evt.getSource()).getParent().getParent();
+        VBox currentBox = (VBox) card.getParent();
+
+        if (currentBox == kanbanController.doneVbox) {
+            kanbanController.doneVbox.getChildren().remove(card);
+            kanbanController.ongoingVbox.getChildren().add(card);
+        } else if (currentBox == kanbanController.ongoingVbox) {
+            kanbanController.ongoingVbox.getChildren().remove(card);
+            kanbanController.todoVbox.getChildren().add(card);
+        }
+    }
+
+
 }

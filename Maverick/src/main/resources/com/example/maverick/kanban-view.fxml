@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="dashboardHbox" BorderPane.alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.6" prefWidth="870.4" stylesheets="@../../../styles/main-window.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.maverick.MainWindowController">
+<HBox fx:id="dashboardHbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="661.6" prefWidth="870.4" stylesheets="@../../../styles/main-window.css" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.maverick.KanbanViewController">
 <children>
     <VBox maxWidth="1.7976931348623157E308" prefHeight="720.0" HBox.hgrow="ALWAYS">
         <children>

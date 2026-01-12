@@ -8,9 +8,9 @@ import javafx.scene.paint.Color;
 
 public class EisenhowerCardController {
 
-    /*@FXML
+    @FXML
     private void onColorSelectedClicked(ActionEvent evt) {
         Color color = ((ColorPicker) evt.getSource()).getValue();
 
-    }*/
+    }
 }

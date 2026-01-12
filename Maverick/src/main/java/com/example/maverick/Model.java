@@ -19,6 +19,34 @@ public class Model {
         statement.executeUpdate(eisenhower_table_SQL);
     }
 
+    public EisenhowerMatrix loadEisenhower() throws SQLException {
+        EisenhowerMatrix matrix = new EisenhowerMatrix();
+
+        String sql = "SELECT * FROM eisenhowerMatrix";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            String description = rs.getString("description");
+            String importance = rs.getString("importance");
+            String urgentness = rs.getString("urgentness");
+
+            if ("IMPORTANT".equals(importance) && "URGENT".equals(urgentness)) {
+                matrix.ImportantUrgentList.add(description);
+            } else if ("IMPORTANT".equals(importance) && "NOTURGENT".equals(urgentness)) {
+                matrix.ImportantNotUrgentList.add(description);
+            } else if ("NOTIMPORTANT".equals(importance) && "URGENT".equals(urgentness)) {
+                matrix.NotImportantUrgentList.add(description);
+            } else if ("NOTIMPORTANT".equals(importance) && "NOTURGENT".equals(urgentness)) {
+                matrix.NotImportantNotUrgentList.add(description);
+            }
+        }
+
+        return matrix;
+    }
+
+
+
     public void saveEisenhower(EisenhowerMatrix eisenhowerMatrix) throws SQLException {
         String insert_SQL = "INSERT INTO eisenhowerMatrix (description, importance, urgentness) VALUES (?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(insert_SQL);

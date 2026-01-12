@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -42,6 +43,35 @@ public class EisenhowerViewController {
         });
         return eisenhowerMatrix;
     }
+
+    public void setEisenhowerMatrix(EisenhowerMatrix matrix) {
+        importantUrgentVBox.getChildren().clear();
+        importantNotUrgentVBox.getChildren().clear();
+        notImportantUrgentVBox.getChildren().clear();
+        notImportantNotUrgentVBox.getChildren().clear();
+
+        matrix.ImportantUrgentList.forEach(taskName -> addEisenhowerCard(taskName, importantUrgentVBox));
+        IO.println("Important urgent loaded");
+
+        matrix.ImportantNotUrgentList.forEach(taskName -> addEisenhowerCard(taskName, importantNotUrgentVBox));
+        matrix.NotImportantUrgentList.forEach(taskName -> addEisenhowerCard(taskName, notImportantUrgentVBox));
+        matrix.NotImportantNotUrgentList.forEach(taskName -> addEisenhowerCard(taskName, notImportantNotUrgentVBox));
+    }
+
+    private void addEisenhowerCard(String taskName, VBox vbox) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("eisenhower-card.fxml"));
+        Parent card;
+        try {
+            card = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        HBox cardHbox = (HBox) card;
+        TextField textField = (TextField) cardHbox.getChildren().getFirst();
+        textField.setText(taskName);
+        importantUrgentVBox.getChildren().add((Node)card);
+    }
+
 
     public void onAddImportantUrgentClicked(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("eisenhower-card.fxml"));
